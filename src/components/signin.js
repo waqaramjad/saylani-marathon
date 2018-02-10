@@ -47,7 +47,7 @@ class Signin extends Component {
 
 <div className="row main">
     <div className="main-login main-center">
-    <h5>SignUP</h5>
+    <h5>SignUP </h5>
         <form className="" method="post" action="#">
             
             <div className="form-group">
