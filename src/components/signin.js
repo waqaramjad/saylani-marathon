@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {signinAction} from '../store/action/action';
+import './Css/signup.css'
+
 class Signin extends Component {
     constructor(props) {
         super(props);
@@ -39,6 +41,10 @@ class Signin extends Component {
         })
     }
 
+    gotoSignUp(){
+
+    }
+
     render() {
         return (
             <div>
@@ -47,18 +53,9 @@ class Signin extends Component {
 
 <div className="row main">
     <div className="main-login main-center">
-    <h5>SignUP </h5>
+    <h5>Sign In</h5>
         <form className="" method="post" action="#">
             
-            <div className="form-group">
-                <label linkTo="name" className="cols-sm-2 control-label">Your Name</label>
-                <div className="cols-sm-10">
-                    <div className="input-group">
-                        <span className="input-group-addon"><i className="fa fa-user fa" aria-hidden="true"></i></span>
-                        <input type="text" onChange={this._onChangeUserName} className="form-control" name="name" id="name"  placeholder="Enter your Name"/>
-                    </div>
-                </div>
-            </div>
 
             <div className="form-group">
                 <label linkTo="email" className="cols-sm-2 control-label">Your Email</label>
@@ -70,15 +67,6 @@ class Signin extends Component {
                 </div>
             </div>
 
-            <div className="form-group">
-                <label linkTo="username" className="cols-sm-2 control-label">Username</label>
-                <div className="cols-sm-10">
-                    <div className="input-group">
-                        <span className="input-group-addon"><i className="fa fa-users fa" aria-hidden="true"></i></span>
-                        <input type="text" className="form-control"  name="username" id="username"  placeholder="Enter your Username"/>
-                    </div>
-                </div>
-            </div>
 
             <div className="form-group">
                 <label linkTo="password" className="cols-sm-2 control-label" >Password</label>
@@ -92,19 +80,21 @@ class Signin extends Component {
 
 
             <div className="form-group ">
-                <a onClick={this.signup} style={{color:'black',backgroundColor:'white'}} type="button" id="button" className="btn btn-primary btn-lg btn-block login-button">Register</a>
+                <a onClick={this.signin} style={{color:'black',backgroundColor:'white'}} type="button" id="button" className="btn btn-primary btn-lg btn-block login-button">Register</a>
             </div>
+
+            <h6>Dont have account <a onClick={this.signin}>SignUp here</a> </h6>
             
         </form>
     </div>
 </div>
 </div> 
 
-                <h1>Hello World Signin</h1>
+                {/* <h1>Hello World Signin</h1>
                 <label>Email:<input type='text' name='email' value={this.state.email} onChange={this._onChangeEmail} /></label>
                 <br />
                 <label>Password:<input type='password' name='password' value={this.state.password} onChange={this._onChangePassword}/></label>
-                <button onClick={this.signin}>Signin</button>
+                <button onClick={this.signin}>Signin</button> */}
             </div>
         )
     }
