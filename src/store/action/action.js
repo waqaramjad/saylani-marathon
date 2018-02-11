@@ -74,7 +74,7 @@ export function signinAction(user) {
 
 
 
-history.push('/home')
+history.push('/'+user.selectUser)
 
                     })
             })
