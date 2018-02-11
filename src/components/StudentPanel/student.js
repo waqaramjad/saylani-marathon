@@ -44,6 +44,7 @@ class student extends Component {
     sendData(event) {
         event.preventDefault()
         let uid = this.props.userDataInSignUp.currentUserData.uid
+        console.log()   
 
         console.log('uid', uid)
 

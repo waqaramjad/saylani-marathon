@@ -113,7 +113,28 @@ export function sendStudentData(user) {
 
 
 }
+export function sendAddsData(user) {
+    return dispatch => {
+        console.log(user)
 
+        user.userUid
+        console.log('hy', user)
+
+        // firebase.database().ref('users/company/' + user.userUid + '/jobs').set(user)
+        //     .then((data) => {
+
+
+        //     })
+        firebase.database().ref('users/Jobs/' ).push(user)
+            .then((data) => {
+
+
+            })
+    }
+
+
+}
+// }
 export function getStudentDataByCompany(data) {
     return dispatch => {
         console.log('getStudentDataByCompany')
