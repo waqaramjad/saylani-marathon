@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {signinAction} from '../store/action/action';
 import './Css/signup.css'
+import history from '../History';
+
 
 class Signin extends Component {
     constructor(props) {
@@ -42,7 +44,7 @@ class Signin extends Component {
     }
 
     gotoSignUp(){
-
+history.push('/signup')
     }
 
     render() {
@@ -58,7 +60,7 @@ class Signin extends Component {
             
 
             <div className="form-group">
-                <label linkTo="email" className="cols-sm-2 control-label">Your Email</label>
+                <label htmlFor="email" className="cols-sm-2 control-label">Your Email</label>
                 <div className="cols-sm-10">
                     <div className="input-group">
                         <span className="input-group-addon"><i className="fa fa-envelope fa" aria-hidden="true"></i></span>
@@ -69,7 +71,7 @@ class Signin extends Component {
 
 
             <div className="form-group">
-                <label linkTo="password" className="cols-sm-2 control-label" >Password</label>
+                <label htmlFor="password" className="cols-sm-2 control-label" >Password</label>
                 <div className="cols-sm-10">
                     <div className="input-group">
                         <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -83,7 +85,7 @@ class Signin extends Component {
                 <a onClick={this.signin} style={{color:'black',backgroundColor:'white'}} type="button" id="button" className="btn btn-primary btn-lg btn-block login-button">Register</a>
             </div>
 
-            <h6>Dont have account <a onClick={this.signin}>SignUp here</a> </h6>
+            <h6>Dont have account <a onClick={this.gotoSignUp}>SignUp here</a> </h6>
             
         </form>
     </div>

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import {signupAction} from '../store/action/action';
 import 'react-bootstrap';
 import './Css/signup.css'
+import history from '../History';
+
 class Signup extends Component {
     constructor(props) {
         super(props);
@@ -10,7 +12,9 @@ class Signup extends Component {
         this.state = {
             email: '',
             userName: '',
-            password: ''
+            password: '',
+            organization : '',
+            selectUser :'student'
         }
 
 
@@ -18,6 +22,8 @@ class Signup extends Component {
         this._onChangeEmail = this._onChangeEmail.bind(this);
         this._onChangeUserName = this._onChangeUserName.bind(this);
         this._onChangePassword = this._onChangePassword.bind(this);
+        this.dropDownSelector = this.dropDownSelector.bind(this);
+        this.organization = this.organization.bind(this);
 
     }
 
@@ -25,14 +31,18 @@ class Signup extends Component {
         let user = {
             email: this.state.email,
             username: this.state.userName,
-            password: this.state.password
+            password: this.state.password , 
+            selectedUser : this.state.selectUser
         }
+
+        let selectUser = this.state.selectUser
+        console.log(selectUser)
         this.setState({
             email: '',
             userName: '',
             password: ''
         })
-        this.props.signupwithEmailPassword(user);
+        this.props.signupwithEmailPassword(user , selectUser);
         // console.log(this.props)
     }
     _onChangeEmail(event){
@@ -48,6 +58,13 @@ class Signup extends Component {
             userName:event.target.value
         })
     }
+    organization(event){
+        console.log(event.target.value)
+        // event.target.value
+    //     this.setState({
+    //         userName:event.target.value
+    //     })
+    // }
     _onChangePassword(event){
         // console.log(event.target.value , 'iufhgud')
         
@@ -56,34 +73,30 @@ class Signup extends Component {
         })
     }
 
+    dropDownSelector(ev){
+console.log(ev.target.value)
+let user = ev.target.value
+this.setState({
+    selectUser : user
+})
+console.log(this.state.selectUser)
+
+
+    }
+
+    goTosignIn(){
+        history.push('/')
+    }
+
     render() {
         return (
             <div>
 
-{/* <div className="span3 well">
-      <legend>New to WebApp? Sign up!</legend>
-    <form accept-charset="UTF-8" action="" method="post">
-		<input className="span3" name="name" placeholder="Full Name" type="text"/> 
-        <input className="span3" name="username" placeholder="Username" type="text"/>
-        <input className="span3" name="password" placeholder="Password" type="password"/> 
-        <button className="btn btn-warning" type="submit">Sign up for WebApp</button>
-    </form>
-</div> */}
-                
-                {/* <button type="button" className="btn btn-primary">Primary</button>
-                <button type="button" className="btn">Basic</button>
-                <h1>Hello World Signup</h1>
-                <label>Email:<input type='text' name='email' value={this.state.email} onChange={this._onChangeEmail} /></label>
-                <br />
-                <label>User Name:<input type='text' name='username' value={this.state.userName} onChange={this._onChangeUserName}/></label>
-                <br />
-                <label>Password:<input type='password' name='password' value={this.state.password} onChange={this._onChangePassword}/></label>
-                <button onClick={this.signup}>Signup</button> */}
 
 <div className="container">
 			<div className="row main">
 				<div className="main-login main-center">
-				<h5>Sign up\</h5>
+				<h5>Sign up</h5>
 					<form className="" method="post" action="#">
 						
 						<div className="form-group">
@@ -116,12 +129,38 @@ class Signup extends Component {
 								</div>
 							</div>
 						</div>
+						<div className="form-group">
+							<label htmlFor="organization" className="cols-sm-2 control-label" >Password</label>
+							<div className="cols-sm-10">
+								<div className="input-group">
+									<span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="text" onChange={this.organization} className="form-control" name="organization" id="organiztion"  placeholder="Enter your Password"/>
+								</div>
+							</div>
+						</div>
+
+                        <div className="form-group">
+							<label htmlFor="password" className="cols-sm-2 control-label" >select  your organization</label>
+							<div className="cols-sm-10">
+								<div className="input-group">
+									<span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<select onChange={this.dropDownSelector}>
+                                    <option value="student">student</option>
+                                    <option value="company">company</option>
+
+                                        
+                                    </select>
+                                    {/* <input type="password" onChange={this._onChangePassword} className="form-control" name="password" id="password"  placeholder="Enter your Password"/> */}
+								</div>
+							</div>
+						</div>
+
 
 
 						<div className="form-group ">
 							<a onClick={this.signup} style={{color:'black' , backgroundColor:'white'}} type="button" id="button" className="btn btn-primary btn-lg btn-block login-button">Register</a>
 						</div>
-						
+						<h6><a onClick={this.goTosignIn}>SignIn</a></h6>
 					</form>
 				</div>
 			</div>

@@ -23,30 +23,22 @@ export function changeUserName() {
 }
 
 
-export function signupAction(user) {
+export function signupAction(user, selectedUser) {
 
     return dispatch => {
 
+        console.log( user.selectedUser)
+
         firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
             .then((createdUser) => {
-                // console.log('signed up successfully', createdUser.uid);
+                console.log('signed up successfully',  user.selectedUser);
+
                 delete user.password;
                 user.uid = createdUser.uid;
-                firebase.database().ref('users/' + createdUser.uid + '/').set(user)
+                firebase.database().ref('users/' + user.selectedUser + '/'+user.uid+'/').set(user)
                     .then(() => {
                         firebase.database().ref('users/').once('value')
                             .then((userData) => {
-                                let allUsers = userData.val();
-                                let currentUserUid = firebase.auth().currentUser.uid;
-                                dispatch({ type: ActionTypes.ALLUSERS, payload: allUsers })
-                                dispatch({ type: ActionTypes.CURRENTUSER, payload: currentUserUid })
-                                firebase.database().ref('message/').once('value')
-                                    .then((messagesData) => {
-                                        let messages = messagesData.val();
-                                        // console.log(messages);
-                                        dispatch({ type: ActionTypes.MESSAGES, payload: messages })
-                                        history.push('/chat');
-                                    })
 
                             })
                     })
@@ -67,26 +59,9 @@ export function signinAction(user) {
             .then((signedinUser) => {
                 firebase.database().ref('users/').once('value')
                     .then((userData) => {
-                        let allUsers = userData.val();
-                        let currentUserUid = firebase.auth().currentUser.uid;
-                        let allUsersArr = [];
-                        for (var key in allUsers) {
-                            allUsersArr.push(allUsers[key]);
-                        }
-                        // console.log(allUsersArr);
-                        dispatch({ type: ActionTypes.ALLUSERS, payload: allUsersArr })
-                        dispatch({ type: ActionTypes.CURRENTUSER, payload: currentUserUid })
-                        firebase.database().ref('message/').once('value')
-                            .then((messagesData) => {
-                                let messages = messagesData.val();
-                                // console.log(messages);
-
-                                dispatch({ type: ActionTypes.MESSAGES, payload: messages })
-                                history.push('/chat');
-                            })
 
 
-
+history.push('/home')
 
                     })
             })
