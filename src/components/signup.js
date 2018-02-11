@@ -145,8 +145,8 @@ console.log(this.state.selectUser)
 								<div className="input-group">
 									<span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
 									<select onChange={this.dropDownSelector}>
-                                    <option value="student">student</option>
-                                    <option value="company">company</option>
+                                    <option  style={{color:'black'}} value="student">student</option>
+                                    <option  style={{color:'black'}}  value="company">company</option>
 
                                         
                                     </select>

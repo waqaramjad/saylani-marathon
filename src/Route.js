@@ -4,6 +4,7 @@ import Home from './components/home';
 import Signup from './components/signup';
 import Signin from './components/signin';
 import student from './components/StudentPanel/student'
+import Company from './components/company/company'
 
 import 'react-bootstrap';
 
@@ -20,6 +21,7 @@ class Routers extends Component {
                     <Route exact path="/signup" component={Signup} />
                     <Route exact path="/" component={Signin} />
                     <Route exact path="/student" component={student} />
+                    <Route exact path="/company" component={Company} />
                     
                     
                 </div>

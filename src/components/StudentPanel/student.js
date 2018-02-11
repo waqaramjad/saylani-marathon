@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 // import './Css/signup.css'
 import './studentCss.css'
 import 'react-bootstrap';
+import Nav from '../navBar'
 import { sendStudentData } from '../../store/action/action'
 
 
@@ -134,6 +135,7 @@ class student extends Component {
     render() {
         return (
             <div>
+                <Nav />
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">

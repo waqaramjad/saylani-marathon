@@ -85,16 +85,42 @@ export function signinAction(user) {
 export function sendStudentData(user) {
     return dispatch => {
         user.userUid
-console.log('hy', user)
+        console.log('hy', user)
 
-            firebase.database().ref('users/student/'+user.userUid+'/profile').set(user)
-            .then((data)=>{
+        firebase.database().ref('users/student/' + user.userUid + '/profile').set(user)
+            .then((data) => {
+
+
+            })
+        firebase.database().ref('users/profiles/' + user.userUid ).update(user)
+            .then((data) => {
 
 
             })
     }
 
 
+}
+
+export function getStudentDataByCompany(data) {
+    return dispatch => {
+        console.log('getStudentDataByCompany')
+
+        firebase.database().ref('users/profiles').once('value')
+        .then((data)=>{
+
+            console.log('action')
+            console.log(data.val())
+            let userData = data.val();
+
+            dispatch({ type: ActionTypes.GETSTUDENTBYCOMPANY, payload: userData })
+
+
+
+
+
+        })
+    }
 }
 
 

@@ -20,6 +20,12 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 currentUserData: action.payload
             })
+        case ActionTypes.GETSTUDENTBYCOMPANY:
+        console.log(action.payload)
+            return ({
+                ...state,
+                getStudentDataByCompany: action.payload
+            })
                 
             default:
             return state;
