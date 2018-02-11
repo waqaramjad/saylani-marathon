@@ -1,7 +1,8 @@
 import ActionTypes from '../constant/constant';
 
 const INITIAL_STATE = {
-    userName: 'waqar'
+    userName: 'waqar' , 
+    currentUserData : {}
   
 }
 
@@ -12,6 +13,12 @@ export default (state = INITIAL_STATE, action) => {
             return ({
                 ...state,
                 userName: action.payload
+            })
+        case ActionTypes.CURRENTUSERDATA:
+        console.log(action.payload)
+            return ({
+                ...state,
+                currentUserData: action.payload
             })
                 
             default:

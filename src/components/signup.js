@@ -64,7 +64,7 @@ class Signup extends Component {
     //     this.setState({
     //         userName:event.target.value
     //     })
-    // }
+    }
     _onChangePassword(event){
         // console.log(event.target.value , 'iufhgud')
         

@@ -1,5 +1,6 @@
 const ActionTypes = {
-    USERNAME:'USERNAME'
+    USERNAME:'USERNAME' , 
+    CURRENTUSERDATA : 'CURRENTUSERDATA'
   
 }
 

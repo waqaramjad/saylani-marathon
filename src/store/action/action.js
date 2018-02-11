@@ -57,8 +57,21 @@ export function signinAction(user) {
     return dispatch => {
         firebase.auth().signInWithEmailAndPassword(user.email, user.password)
             .then((signedinUser) => {
-                firebase.database().ref('users/').once('value')
+                console.log(signedinUser.uid)
+                firebase.database().ref('users/'+user.selectUser+'/'+signedinUser.uid).once('value')
                     .then((userData) => {
+                        console.log(userData.val());
+                        let userDataFromFirebase = userData.val()
+                        let myData = {
+                                email : userDataFromFirebase.email , 
+                                uid : userDataFromFirebase.uid ,
+                                userName : userDataFromFirebase.username
+
+                        }
+                        console.log(myData)
+                        dispatch({ type: ActionTypes.CURRENTUSERDATA, payload: myData })
+
+
 
 
 history.push('/home')
