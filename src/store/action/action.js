@@ -27,15 +27,15 @@ export function signupAction(user, selectedUser) {
 
     return dispatch => {
 
-        console.log( user.selectedUser)
+        console.log(user.selectedUser)
 
         firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
             .then((createdUser) => {
-                console.log('signed up successfully',  user.selectedUser);
+                console.log('signed up successfully', user.selectedUser);
 
                 delete user.password;
                 user.uid = createdUser.uid;
-                firebase.database().ref('users/' + user.selectedUser + '/'+user.uid+'/').set(user)
+                firebase.database().ref('users/' + user.selectedUser + '/' + user.uid + '/').set(user)
                     .then(() => {
                         firebase.database().ref('users/').once('value')
                             .then((userData) => {
@@ -58,14 +58,14 @@ export function signinAction(user) {
         firebase.auth().signInWithEmailAndPassword(user.email, user.password)
             .then((signedinUser) => {
                 console.log(signedinUser.uid)
-                firebase.database().ref('users/'+user.selectUser+'/'+signedinUser.uid).once('value')
+                firebase.database().ref('users/' + user.selectUser + '/' + signedinUser.uid).once('value')
                     .then((userData) => {
                         console.log(userData.val());
                         let userDataFromFirebase = userData.val()
                         let myData = {
-                                email : userDataFromFirebase.email , 
-                                uid : userDataFromFirebase.uid ,
-                                userName : userDataFromFirebase.username
+                            email: userDataFromFirebase.email,
+                            uid: userDataFromFirebase.uid,
+                            userName: userDataFromFirebase.username
 
                         }
                         console.log(myData)
@@ -74,13 +74,28 @@ export function signinAction(user) {
 
 
 
-history.push('/'+user.selectUser)
+                        history.push('/' + user.selectUser)
 
                     })
             })
     }
 }
 
+
+export function sendStudentData(user) {
+    return dispatch => {
+        user.userUid
+console.log('hy', user)
+
+            firebase.database().ref('users/student/'+user.userUid+'/profile').set(user)
+            .then((data)=>{
+
+
+            })
+    }
+
+
+}
 
 
 
