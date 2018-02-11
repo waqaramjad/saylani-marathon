@@ -58,28 +58,40 @@ export function signinAction(user) {
         firebase.auth().signInWithEmailAndPassword(user.email, user.password)
             .then((signedinUser) => {
                 console.log(signedinUser.uid)
-                firebase.database().ref('users/' + user.selectUser + '/' + signedinUser.uid).once('value')
-                    .then((userData) => {
-                        console.log(userData.val());
-                        let userDataFromFirebase = userData.val()
-                        let myData = {
-                            email: userDataFromFirebase.email,
-                            uid: userDataFromFirebase.uid,
-                            userName: userDataFromFirebase.username
+                if (signedinUser.uid =='j8HPX9vawIMc0ezcSixDHj0rzCn1') {
 
-                        }
-                        console.log(myData)
-                        dispatch({ type: ActionTypes.CURRENTUSERDATA, payload: myData })
+                    history.push('/Admin')
+
+                }
+                else {
+                    firebase.database().ref('users/' + user.selectUser + '/' + signedinUser.uid).once('value')
+                        .then((userData) => {
+                            console.log(userData.val());
+                            let userDataFromFirebase = userData.val()
+                            let myData = {
+                                email: userDataFromFirebase.email,
+                                uid: userDataFromFirebase.uid,
+                                userName: userDataFromFirebase.username
+
+                            }
+                            console.log(myData)
+                            dispatch({ type: ActionTypes.CURRENTUSERDATA, payload: myData })
 
 
 
 
-                        history.push('/' + user.selectUser)
+                            history.push('/' + user.selectUser)
 
-                    })
+                        })
+                }
             })
     }
+
 }
+
+
+
+
 
 
 export function sendStudentData(user) {
@@ -92,7 +104,7 @@ export function sendStudentData(user) {
 
 
             })
-        firebase.database().ref('users/profiles/' + user.userUid ).update(user)
+        firebase.database().ref('users/profiles/' + user.userUid).update(user)
             .then((data) => {
 
 
@@ -107,19 +119,19 @@ export function getStudentDataByCompany(data) {
         console.log('getStudentDataByCompany')
 
         firebase.database().ref('users/profiles').once('value')
-        .then((data)=>{
+            .then((data) => {
 
-            console.log('action')
-            console.log(data.val())
-            let userData = data.val();
+                console.log('action')
+                console.log(data.val())
+                let userData = data.val();
 
-            dispatch({ type: ActionTypes.GETSTUDENTBYCOMPANY, payload: userData })
-
-
+                dispatch({ type: ActionTypes.GETSTUDENTBYCOMPANY, payload: userData })
 
 
 
-        })
+
+
+            })
     }
 }
 

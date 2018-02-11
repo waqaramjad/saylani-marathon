@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { signinAction } from '../store/action/action';
 import './Css/signup.css'
 import history from '../History';
+import Nav from './navBar'
 
 
 class Signin extends Component {
@@ -63,7 +64,7 @@ class Signin extends Component {
     render() {
         return (
             <div>
-
+<Nav/>
                 <div className="container">
 
                     <div className="row main">
@@ -92,9 +93,10 @@ class Signin extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <select  onChange={this.dropDownSelector}>
+                                <select  style={{color:'black'}} onChange={this.dropDownSelector}>
                                     <option style={{color:'black'}}  value="student">student</option>
                                     <option style={{color:'black'}}  value="company">company</option>
+                                    <option style={{color:'black'}}  value="company">Admin</option>
 
                                         
                                     </select>
@@ -104,7 +106,7 @@ class Signin extends Component {
                                     <a onClick={this.signin} style={{ color: 'black', backgroundColor: 'white' }} type="button" id="button" className="btn btn-primary btn-lg btn-block login-button">Sign In</a>
                                 </div>
 
-                                <h6>Dont have account <a onClick={this.gotoSignUp}>SignUp here</a> </h6>
+                                <h6>Dont have account <a style={{color:'whiite'}} onClick={this.gotoSignUp}>SignUp here</a> </h6>
 
                             </form>
                         </div>

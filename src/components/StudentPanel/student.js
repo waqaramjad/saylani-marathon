@@ -35,6 +35,8 @@ class student extends Component {
         this.gpa = this.gpa.bind(this)
         this.intrestedField = this.intrestedField.bind(this)
         this.sendData = this.sendData.bind(this)
+        // this.home = this.home.bind(this)
+        // this.jobs = this.jobs.bind(this)
 
 
     }
@@ -123,6 +125,13 @@ class student extends Component {
         this.setState({
             intrestedField: value
         })
+    
+    
+    }
+
+
+    home(ev){
+
     }
     // name(ev){
     //     console.log( ev.target.value)
@@ -136,6 +145,10 @@ class student extends Component {
         return (
             <div>
                 <Nav />
+
+                <input type='button' value='home'/>
+                <input type='button' value='see jobs'/>
+                {/* <input type='button'/> */}
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">

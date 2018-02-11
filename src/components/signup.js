@@ -4,6 +4,7 @@ import {signupAction} from '../store/action/action';
 import 'react-bootstrap';
 import './Css/signup.css'
 import history from '../History';
+import Nav from './navBar'
 
 class Signup extends Component {
     constructor(props) {
@@ -92,7 +93,7 @@ console.log(this.state.selectUser)
         return (
             <div>
 
-
+<Nav/>
 <div className="container">
 			<div className="row main">
 				<div className="main-login main-center">
@@ -144,7 +145,7 @@ console.log(this.state.selectUser)
 							<div className="cols-sm-10">
 								<div className="input-group">
 									<span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<select onChange={this.dropDownSelector}>
+									<select style={{color:'black'}} onChange={this.dropDownSelector}>
                                     <option  style={{color:'black'}} value="student">student</option>
                                     <option  style={{color:'black'}}  value="company">company</option>
 
@@ -160,7 +161,7 @@ console.log(this.state.selectUser)
 						<div className="form-group ">
 							<a onClick={this.signup} style={{color:'black' , backgroundColor:'white'}} type="button" id="button" className="btn btn-primary btn-lg btn-block login-button">Register</a>
 						</div>
-						<h6><a onClick={this.goTosignIn}>SignIn</a></h6>
+						<h6><a style={{color:'whiite'}}     onClick={this.goTosignIn}>SignIn</a></h6>
 					</form>
 				</div>
 			</div>

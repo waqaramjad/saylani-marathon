@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { signinAction } from '../store/action/action';
 // import './Css/signup.css'
-// import history from '../../History';
+import history from '../../History';
 import Nav from '../navBar'
 import { getStudentDataByCompany } from '../../store/action/action'
 import { apps } from 'firebase';
@@ -19,6 +19,10 @@ class Company extends Component {
 
         this.getData = this.getData.bind(this)
         this.getData1 = this.getData1.bind(this)
+                this.home = this.home.bind(this)
+        this.Job = this.Job.bind(this)
+
+   
     }
     componentWillMount() {
         var a = 'dffd'
@@ -37,6 +41,15 @@ class Company extends Component {
         })
 
     }
+Job(ev){
+history.push('/Add')
+}
+
+home(ev){
+
+
+}
+
 
     getData(ev) {
 
@@ -80,6 +93,10 @@ class Company extends Component {
         return (
             <div>
                  <Nav />
+
+                 <input type='button' value='home' onClick={this.home}/>
+                <input type='button' value='post jobs' onClick={this.Job}/>
+
                 {
 
                     Object.keys(studentData).map(function (key, index) {
